@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+const accessToken = `Bearer ${Cypress.env('gitlab_access_token')}`
 const user = Cypress.env('user_name')
 const password = Cypress.env('user_password')
 const issue = {
@@ -10,15 +11,15 @@ const issue = {
   }
 }
 
-describe('Create Issue', () => {
+describe('Criar Issue', () => {
 
   beforeEach(() => {
     cy.visit(Cypress.env('url'));
     cy.login(user, password);
-    cy.api_createProject(issue.project)
+    cy.api_createProject(issue.project, accessToken)
   })
 
-  it('successfully', () => {
+  it('Criar Issue sucesso', () => {
     cy.gui_createIssue(issue)
   })
 })

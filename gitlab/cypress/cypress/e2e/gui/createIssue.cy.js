@@ -10,7 +10,7 @@ const issue = {
   }
 }
 
-describe('Create Issue', () => {
+describe('Criar Issue', () => {
 
   beforeEach(() => {
     cy.visit(Cypress.env('url'));
@@ -18,7 +18,7 @@ describe('Create Issue', () => {
     cy.gui_createProject(issue.project)
   })
 
-  it('successfully', () => {
+  it('Criar Issue Sucesso', () => {
     cy.gui_createIssue(issue)
   })
 })

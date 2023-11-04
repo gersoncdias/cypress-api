@@ -6,13 +6,13 @@ const project = {
   description: faker.lorem.words(3),
 };
 
-describe('Create Project', () => {
+describe('Criar Projeto', () => {
     beforeEach(() => {
       cy.visit(Cypress.env('url'));
       cy.login(user, password);
     });
   
-    it('successfully', () => {
+    it('Criar projeto sucesso', () => {
         cy.gui_createProject(project);
     });
 });

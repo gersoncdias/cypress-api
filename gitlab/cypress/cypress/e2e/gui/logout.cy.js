@@ -7,7 +7,7 @@ describe('Logout', () => {
     cy.login(user, password);
   });
   
-    it('successfully', () => {
+    it('Logout Sucesso', () => {
       cy.logout()
     })
   })

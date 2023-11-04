@@ -1,20 +1,21 @@
 import { faker } from '@faker-js/faker'
+const accessToken = `Bearer ${Cypress.env('gitlab_access_token')}`
 
-describe('Get All Project', () => {
+describe('Buscar Projetos', () => {
   beforeEach(() => {
     const project = {
       name: `project-${faker.company.bsNoun()}`,
       description: faker.random.words(5)
     };
 
-  cy.api_createProject(project)
+  cy.api_createProject(project, accessToken)
     .then(response => {
       expect(response.status).to.equal(201)
       expect(response.body.name).to.equal(project.name)
     })
   });
-  it('successfully', () => {
-    cy.api_getAllProjects()
+  it('Buscar projeto sucesso', () => {
+    cy.api_getAllProjects(accessToken)
       .then(response => {
         expect(response.status).to.equal(200);
 
