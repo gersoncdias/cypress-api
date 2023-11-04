@@ -1,0 +1,2 @@
+docker exec -it <seu-contêiner-gitlab> gitlab-rake "gitlab:password:reset[john_doe]"
+executar resete de senha no git labb
