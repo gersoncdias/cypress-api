@@ -35,3 +35,24 @@ Cypress.Commands.add('api_deleteProjects', (accessToken, projectId) => {
     });
   });
 });
+
+Cypress.Commands.add("getGitLabGroupInfo", (groupPath, accessToken) => {
+  cy.request({
+    method: "POST",
+    url: `${baseUrl}/api/graphql`,
+    headers: {
+      "Authorization": { Authorization: accessToken },
+      "Content-Type": "application/json",
+    },
+    body: {
+      query: `
+        query GetGroupInfo {
+          group(fullPath: "${groupPath}") {
+            id
+            description
+          }
+        }
+      `,
+    },
+  });
+});
