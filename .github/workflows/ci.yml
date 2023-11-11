@@ -1,4 +1,4 @@
-name: With server
+name: End-to-end tests
 on: push
 jobs:
   cypress-run:
@@ -6,26 +6,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Start Docker Compose
-        run: |
-          docker-compose -f /home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml up -d
-          docker ps -a
-
-      - name: Wait for server to respond
-        run: |
-          timeout 300 bash -c '
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080)" != "200" ]]; do
-            echo "Waiting for server to respond..."
-            sleep 5
-          done
-          '
-
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with:
-          start: npm start
-          wait-on: 'http://localhost:8080'
-
-      - name: Stop Docker Compose
-        run: docker-compose -f /home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml down
