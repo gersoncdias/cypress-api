@@ -1,6 +1,3 @@
-- name: Checkout
-  uses: actions/checkout@v2
-
 - name: Run Cypress tests
   uses: cypress-io/github-action@v6
   with:
