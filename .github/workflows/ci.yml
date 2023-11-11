@@ -9,7 +9,7 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          docker-compose -f /home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml up -d
+          docker-compose -f "/home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml" up -d
           docker ps -a
 
       - name: Wait for server to respond
@@ -25,7 +25,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm start
-          wait-on: 'http://localhost/users/sign_in'
+          wait-on: 'http://localhost:8080'
 
       - name: Stop Docker Compose
-        run: docker-compose -f /home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml down
+        run: docker-compose -f "/home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml" down
