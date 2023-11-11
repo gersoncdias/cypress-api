@@ -1,4 +1,4 @@
-name: After server responds
+name: With server
 on: push
 jobs:
   cypress-run:
@@ -9,13 +9,13 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          docker-compose -f "/home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml" up -d
+          docker-compose -f /Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml up -d
           docker ps -a
 
       - name: Wait for server to respond
         run: |
           timeout 300 bash -c '
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080)" != "200" ]]; do
+          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:80)" != "200" ]]; do
             echo "Waiting for server to respond..."
             sleep 5
           done
@@ -25,7 +25,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm start
-          wait-on: 'http://localhost:8080'
+          wait-on: 'http://localhost:80'
 
       - name: Stop Docker Compose
-        run: docker-compose -f "/home/gerson/Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml" down
+        run: docker-compose -f /Pojetos-Cypress/cypress-api/gitlab/docker-compose.yml down
