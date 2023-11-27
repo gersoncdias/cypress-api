@@ -6,12 +6,12 @@ const issue = {
   title: `issue-${faker.company.buzzNoun()}`,
   description: faker.lorem.words(3),
   project: {
-      name: `project-${faker.company.buzzNoun()}`,
-      description: faker.lorem.words(3),
+    name: `project-${faker.company.buzzNoun()}`,
+    description: faker.lorem.words(3),
   }
 }
 
-describe('Criar Issue', () => {
+describe('Criar Issue Fast', () => {
 
   beforeEach(() => {
     cy.visit(Cypress.env('url'));
@@ -19,7 +19,7 @@ describe('Criar Issue', () => {
     cy.api_createProject(issue.project, accessToken)
   })
 
-  it('Criar Issue sucesso', () => {
+  it('Criar Issue Fast Sucesso', () => {
     cy.gui_createIssue(issue)
   })
 })

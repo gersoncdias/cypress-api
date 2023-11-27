@@ -15,9 +15,7 @@ Cypress.Commands.add('login', (user, password) => {
     cy.get(loginPg.campo_senha)
       .should('exist')
       .should('be.visible')
-      .type(password, {
-        log: false
-      })
+      .type(password, {log: false})
 
     cy.get(loginPg.btn_login)
       .should('exist')
@@ -44,6 +42,13 @@ Cypress.Commands.add('logout', () => {
     .should('exist')
     .should('be.visible')
     .click()
-
- cy.url().should('include', '/users/sign_in'); 
+  cy.url().should('include', '/users/sign_in'); 
 })
+
+Cypress.Commands.add('lerCookieDoArquivo', () => {
+  const caminhoAbsoluto = Cypress.config("fileServerFolder") + '/temporario.txt';
+
+  return cy.readFile(caminhoAbsoluto).then((conteudoDoArquivo) => {
+    return conteudoDoArquivo;
+  });
+});

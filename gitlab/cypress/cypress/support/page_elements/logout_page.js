@@ -4,5 +4,4 @@ class logoutPage {
         this.btn_logout = '.sign-out-link'
     }
 }
-
 module.exports = logoutPage

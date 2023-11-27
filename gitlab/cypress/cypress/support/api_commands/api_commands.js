@@ -3,7 +3,7 @@ const baseUrl = Cypress.env('url');
 
 
 Cypress.Commands.add('api_createProject', (project, accessToken) => {
-  cy.api({
+  cy.request({
     method: 'POST',
     url: `${baseUrl}/api/v4/projects/`,
     failOnStatusCode: false,
@@ -16,7 +16,7 @@ Cypress.Commands.add('api_createProject', (project, accessToken) => {
 })
 
 Cypress.Commands.add('api_getAllProjects', accessToken => {
-  cy.api({
+  cy.request({
     method: 'GET',
     url: `${baseUrl}/api/v4/projects/`,
     headers: { Authorization: accessToken },
@@ -26,7 +26,7 @@ Cypress.Commands.add('api_getAllProjects', accessToken => {
 Cypress.Commands.add('api_deleteProjects', (accessToken, projectId) => {
   cy.api_getAllProjects(accessToken).then(res => {
     res.body.forEach(project => {
-      cy.api({
+      cy.request({
         method: 'DELETE',
         url: `${baseUrl}/api/v4/projects/${project.id}`,
         failOnStatusCode: false,

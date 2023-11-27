@@ -8,11 +8,11 @@ describe('Buscar Projetos', () => {
       description: faker.random.words(5)
     };
 
-  cy.api_createProject(project, accessToken)
-    .then(response => {
-      expect(response.status).to.equal(201)
-      expect(response.body.name).to.equal(project.name)
-    })
+    cy.api_createProject(project, accessToken)
+      .then(response => {
+        expect(response.status).to.equal(201)
+       expect(response.body.name).to.equal(project.name)
+      })
   });
   it('Buscar projeto sucesso', () => {
     cy.api_getAllProjects(accessToken)

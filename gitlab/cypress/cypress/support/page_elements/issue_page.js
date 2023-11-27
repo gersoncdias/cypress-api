@@ -5,7 +5,4 @@ class issuePage {
         this.btn_issue = 'Submit issue'
     }
 }
-
 module.exports = issuePage
-
-

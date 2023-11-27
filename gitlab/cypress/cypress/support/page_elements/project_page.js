@@ -6,6 +6,5 @@ class projectPage {
         this.btn_project = '#blank-project-pane > #new_project > .btn-success'
     }
 }
-
 module.exports = projectPage
 

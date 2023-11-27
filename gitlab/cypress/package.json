@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "cypress": "^13.3.3",
+    "cypress-fs": "^0.2.4",
     "faker": "^6.6.6"
   },
   "dependencies": {
@@ -16,5 +17,5 @@
     "test:allure": "npm run e2e && npm run report:allure",
     "clean_reports": "rm -rf allure-results",
     "clean_screenshots": "rm -rf cypress/screenshots"
-  } 
+  }
 }

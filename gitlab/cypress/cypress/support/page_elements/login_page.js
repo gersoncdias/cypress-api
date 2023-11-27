@@ -6,5 +6,4 @@ class loginPage {
         this.avatar = '.header-user-avatar'
     }
 }
-
 module.exports = loginPage

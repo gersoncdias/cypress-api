@@ -1,14 +1,14 @@
-const user = Cypress.env('user_name')
-const password = Cypress.env('user_password')
+describe("Logout Test", () => {
+  it("Logout", () => {
+    cy.lerCookieDoArquivo().then((conteudoDoArquivo) => {
+      cy.visit(Cypress.env("url"), {
+        headers: {
+          cookie: `_gitlab_session=${conteudoDoArquivo}`,
+        },
+      });
 
-describe('Logout', () => {
-  beforeEach(() => {
-    cy.visit(Cypress.env('url'));
-    cy.login(user, password);
+      cy.logout();
+    
+    });
   });
-  
-    it('Logout Sucesso', () => {
-      cy.logout()
-    })
-  })
-  
+});
